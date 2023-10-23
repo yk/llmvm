@@ -10,12 +10,18 @@ def main():
         logger.info(f"Loading {fname}")
         with open(fname) as in_f:
             program = parsing.parse_program(in_f)
+            if "snek" in fname:
+                program.convert_numbers_to_chars = True
         logger.info(f"Running {fname}")
         match vm_type:
             case "ref":
                 vm = vms.VM(constants=program.constants)
             case "gpt":
                 vm = vms.GPTVM(constants=program.constants)
+            case "fullgpt":
+                vm = vms.FullGPTVM(constants=program.constants)
+            case "chadgpt":
+                vm = vms.ChadGPTVM(constants=program.constants)
             case _:
                 raise NotImplementedError(vm_type)
         retval = vm.run_program(program)

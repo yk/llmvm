@@ -116,3 +116,4 @@ class Program(pydantic.BaseModel):
     instructions: list[Instruction]
     labels: dict[str, int]
     constants: dict[str, Any]
+    convert_numbers_to_chars: bool = False

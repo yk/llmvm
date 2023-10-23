@@ -1,16 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -S -m32 -fverbose-asm -O3
 
-all: hello helloasm
+all: fizzbuzzll snekll
 
-hello: hello.c
-	$(CC) -o hello hello.c
+fizzbuzz: fizzbuzz.c
+	$(CC) -o fizzbuzz fizzbuzz.c
 
-helloasm: hello.c
-	$(CC) $(CFLAGS) -o hello.asm hello.c
+fizzbuzzasm: fizzbuzz.c
+	$(CC) $(CFLAGS) -o fizzbuzz.asm fizzbuzz.c
 
-helloll: hello.c
-	clang -S -emit-llvm hello.c
+fizzbuzzll: fizzbuzz.c
+	clang -S -emit-llvm fizzbuzz.c
 
 snek: snek.c
 	$(CC) -o snek snek.c
